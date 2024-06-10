@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Sistema da Recepção 62°BI{% endblock %} 
+
+{% block content %}
+{% load static %}
+    <form class="filter" method="get">
+        <p>Nome: </p>{{filter.form.nome}}
+        <p>Documento: </p>{{filter.form.documento}}
+        <p>Seção: </p>{{filter.form.secao}}
+        <input class="buttonFilter" type="submit" value="Buscar">
+    </form>
+
+    <table id="table" class="table">
+        <thead> 
+            <tr>
+                <th>Nome</th>
+                <th>Documento</th>
+                <th>Seção</th>
+                <th>Data</th>
+                <th id="acoes"></th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            {% for visitante in visitante %}
+                <tr>
+                    <td class="tdleft">{{ visitante.nome }}</td>
+                    <td>{{ visitante.documento }}</td>
+                    <td>{{ visitante.secao }}</td>
+                    <td>{{ visitante.data|date:"H:i d/m/Y" }}</td>
+                    <td id="acoes"><div class="btn-group" role="group">
+                        <a href="visitante/{{ visitante.id }}/update"><img class="iconMais" src="{% static 'images/mais.png' %}" alt="Config"></a>
+                    </div></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

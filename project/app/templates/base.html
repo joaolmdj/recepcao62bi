@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div id="page-container">
+        <div class="barra_brasil">
+            <img class="brasil" src="{% static 'images/brasil.png' %}" alt="Brasil">
+            <span id="span">BRASIL | Ministério da Defesa - Exército Brasileiro</span>    
+            <img class="exercito" src="{% static 'images/exercito.png' %}" alt="Exercito">
+        </div>
+        <header>
+            <img class="image62" src="{% static 'images/62bi2.png' %}" alt="62° Batalhão de Infantaria">
+            <div class="conteiner_header">
+                <h5>Exército Brasileiro</h5>
+                <h1>62° Batalhão de Infantaria</h1>
+                <h5>Batalhão Francisco de Lima e Silva</h5>
+            </div>
+        </header>
+        <navbar>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/cadastro/">Cadastro</a></li>
+                <li><a href="/graficos/">Graficos</a></li>
+                <li><a href="/sobre/">Sobre</a></li>
+            </ul>
+        </navbar>
+        <div class="body-content">
+            {% block content %}
+            
+            {% endblock %}
+        </div>
+        <footer id="footer">
+            <div class="footerColor"></div>
+            <div class="conteiner_footer">
+                <p class="textoFooter">62º Batalhão de Infantaria Francisco de Lima e Silva</p>
+                <p class="textoFooter">Endereço: Rua Ministro Calógeras, 1200 - Atiradores, 89203-000 | Joinville - SC</p>
+                <p class="textoFooter">Telefone: (47) 3433-2399 |  E-Mail: rp62bi@gmail.com</p>
+            </div>
+            <img class="footerImg" src="{% static 'images/gov.png' %}" alt="Brasil">
+        </footer>
+    </div>
+    <script src="{% static 'js/script.js'%}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</body>
+</html>

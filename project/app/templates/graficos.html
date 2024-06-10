@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Visitantes{% endblock %} 
+
+{% block content %}
+    {% autoescape off %}
+    <div class="grafico">
+        {% comment %} Fusex: {{ fusex }}
+        Medico: {{ medico }}
+        Dentista: {{ dentista }} {% endcomment %}
+        {{ grafico }}
+    </div>
+    {% endautoescape %}
+{% endblock %}

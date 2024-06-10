@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro{% endblock %} 
+
+{% block content %}
+{% load static %}
+    <div class="tabela">
+        <div class="messageform">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form">
+            <form method="POST">
+                {% csrf_token %}
+                <table>
+                    {% for field in form %}
+                        <tr>
+                            <td class="tdleft">{{ field.label_tag }}</td>
+                            <td class="campo">{{ field }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <button class="button" type="submit" value="Salvar">Salvar</button>
+                {% if delete == True %}<a href="/visitante/{{ obj.id }}/delete"><img class="icones" src="{% static 'images/remove.png' %}" alt="Delete"></a>{% endif %}
+            </form>
+        </div>
+        <img class="mindef" src="{% static 'images/mindef.png' %}" alt="Brasil">
+    </div>
+<script text="javascript">
+    setTimeout(fade_out, 3000);
+    function fade_out() {
+        $(".messages").fadeOut().empty();
+    }
+</script>
+{% endblock %}  

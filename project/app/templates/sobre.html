@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Sobre{% endblock %} 
+
+{% block content %}
+{% load static %}
+
+    <div class="cards">
+        <div class="card shadow">
+            <p class="cardTitle">Fundo de Saúde do Exército - FuSEx</p>
+            <p>Período da manhã – Segunda-Feira a Quinta-Feira 08:30h às 11:30h / Sexta-Feira 08:00 às 11:30</p>
+            <p>Período da tarde – Segunda-Feira a Quinta-Feira 13:30h às 15:30h</p>
+        </div>
+
+        <div class="card shadow">
+            <p class="cardTitle">Seção de Veteranos e Pensionistas - SVP</p>
+            <p>Período da manhã – Terça-Feira a Quinta-Feira 08:30h às 11:30h</p>
+            <p>Prova de vida, informe de rendimentos</p>
+        </div>
+
+        <div class="card shadow">
+            <p class="cardTitle">Secretaria, Protocolo, SecMob e Identificação</p>
+            <p>Período da manhã – Segunda-Feira a Quinta-Feira 08:30h às 11:30h / Sexta-Feira 08:00 às 11:30</p>
+            <p>Período da tarde – Segunda-Feira a Quinta-Feira 13:30h às 15:30h</p>
+        </div>
+
+        <div class="card shadow">
+            <p class="cardTitle">Seção de Fiscalização de Produtos Controlados - SFPC</p>
+            <p>Período da tarde – Quinta-Feira 13:30h a 15:30h</p>
+        </div>
+    </div>
+
+    <img class="vestimenta" src="{% static 'images/vestimenta.jpg' %}" alt="Brasil">
+
+    <div class="mapa"><iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Rua%20Ministro%20Cal%C3%B3geras,%201200+(62%C2%B0%20Batalh%C3%A3o%20de%20Infantaria)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps trackers</a></iframe></div>
+
+{% endblock %}
