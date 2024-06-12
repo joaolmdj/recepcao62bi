@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from datetime import datetime
 
 
@@ -23,6 +22,7 @@ def default_date():
 
 
 class Visitante(models.Model):
+    objects = None
     nome = models.CharField('Nome', max_length=100)
     documento = models.CharField('Documento', max_length=20)
     secao = models.CharField('Seção', choices=SECAO_CHOICES, blank=False, null=False, max_length=50)

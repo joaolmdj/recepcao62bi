@@ -10,8 +10,8 @@ urlpatterns = [
     path('cadastro/', views.cadastro),
     path('graficos/', views.graficos),
     path('sobre/', views.sobre),
-    path('visitante/<id>/update', views.updateVisitante, name='updateVisitante'),
-    path('visitante/<id>/delete', views.deleteVisitante, name='deleteVisitante'),
+    path('visitante/<id>/update', views.updatevisitante, name='updateVisitante'),
+    path('visitante/<id>/delete', views.deletevisitante, name='deleteVisitante'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

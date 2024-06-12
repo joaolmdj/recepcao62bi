@@ -4,11 +4,9 @@
 __pycache__
 **/__pycache__
 migrations
-project/app/static/
-project/app/media/
-project/project/.env
+app/static/
+app/media/
 project/.env
-\project\project\.env
 project/app/__pycache__
 project/app/migrations
 project/project/__pycache__

@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from app.forms import VisitanteForm
+from .forms import VisitanteForm
 from .models import Visitante
 from .filters import VisitanteFilter
-from django.core.paginator import Paginator
 from datetime import date
 from django.contrib import messages
 import plotly.graph_objects as go
@@ -24,13 +23,12 @@ def visitantes(request):
         'today': d1
     }
 
-
     return render(request, 'visitantes.html', contexto)
 
 
 @login_required
 def graficos(request):
-    fusex = Visitante.objects.filter(secao__icontains ='Fusex')
+    fusex = Visitante.objects.filter(secao__icontains='Fusex')
     dentista = Visitante.objects.filter(secao__icontains='Dentista')
     medico = Visitante.objects.filter(secao__icontains='Medico')
 
@@ -41,7 +39,7 @@ def graficos(request):
     labels = 'Fusex', 'Medico', 'Dentista'
     sizes = [fusex, medico, dentista]
     cores = ["Green", "Olive", "Lime"]
-    grafico = plot(go.Figure(data = go.Pie(labels=labels,values=sizes,marker_colors=cores)),output_type='div')
+    grafico = plot(go.Figure(data=go.Pie(labels=labels, values=sizes, marker_colors=cores)), output_type='div')
 
     context = {
         "grafico": grafico,
@@ -55,7 +53,6 @@ def graficos(request):
 
 @login_required
 def sobre(request):
-    
     return render(request, 'sobre.html')
 
 
@@ -65,14 +62,14 @@ def cadastro(request):
     table = Visitante.objects.all()
 
     if request.method == 'POST':
-        formVisitante = VisitanteForm(request.POST or None)
-        
-        if formVisitante.is_valid():
-            formVisitante.save()
+        form_visitante = VisitanteForm(request.POST or None)
+
+        if form_visitante.is_valid():
+            form_visitante.save()
             messages.success(request, 'Cadastro realizado com sucesso!')
             return render(request, 'cadastro.html', {'form': form, 'table': table})
         else:
-            return render(request, 'cadastro.html', {'form': formVisitante, 'table': table})
+            return render(request, 'cadastro.html', {'form': form_visitante, 'table': table})
 
     context = {
         'form': form
@@ -82,7 +79,7 @@ def cadastro(request):
 
 
 @login_required
-def updateVisitante(request, id):
+def updatevisitante(request, id):
     obj = get_object_or_404(Visitante, id=id)
     delete = True
     form = VisitanteForm(request.POST or None, instance=obj)
@@ -101,7 +98,7 @@ def updateVisitante(request, id):
 
 
 @login_required
-def deleteVisitante(request, id):
+def deletevisitante(request, id):
     obj = get_object_or_404(Visitante, id=id)
     obj.delete()
 
