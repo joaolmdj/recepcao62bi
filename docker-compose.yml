@@ -4,21 +4,23 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: recepcao62bi
-      POSTGRES_USER: recepcao62bi
-      POSTGRES_PASSWORD: recepcao62bi
+      POSTGRES_DB: recepcao_db
+      POSTGRES_USER: recepcao_user
+      POSTGRES_PASSWORD: recepcao_password
 
   web:
     build: .
-    command: ["gunicorn", "--bind", "0.0.0.0:8000", "project.wsgi:application"]
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - .:/app
+      - .:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://recepcao62bi:recepcao62bi@db:5432/recepcao62bi
+      DATABASE_URL: postgres://recepcao_user:recepcao_password@db:5432/recepcao_db
+      DEBUG: 'True'
+      ALLOWED_HOSTS: 'localhost,127.0.0.1'
 
 volumes:
   postgres_data:

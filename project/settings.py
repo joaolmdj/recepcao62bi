@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import dj_database_url
 from os.path import join, dirname
 from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '.env')
@@ -11,7 +12,6 @@ DATA_DIR = os.path.join(BASE_DIR, 'data')
 
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-
 
 DEBUG = os.getenv('DEBUG')
 
@@ -62,9 +62,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
-import os
-import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(

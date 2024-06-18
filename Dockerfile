@@ -1,14 +1,19 @@
-# Use a imagem base
-FROM python:3.10
+FROM python:3.9-slim
 
-WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-COPY . .
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN mkdir /code
+WORKDIR /code
 
-RUN python manage.py collectstatic --noinput
+COPY requirements.txt /code/
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-EXPOSE 8000
+COPY . /code/
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "project.wsgi:application"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
